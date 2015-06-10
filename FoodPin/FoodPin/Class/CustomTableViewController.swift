@@ -7,53 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
-class CustomTableViewController: UITableViewController {
+class CustomTableViewController: UITableViewController,NSFetchedResultsControllerDelegate{
     
-     var restaurants:[Restaurant] = []
-//    var restaurants:[Restaurant] = [
-//    Restaurant(name: "伟星大厦", type: "zhong su", location: "杭州文三路252号",
-//    image: "free-flat-halloween-icons-01", isVisited: false),
-//    Restaurant(name: "Homei", type: "Cafe", location: "Hong Kong,Hong Kong,Hong Kong,Hong Kong", image: "free-flat-halloween-icons-02",
-//    isVisited: false),
-//    Restaurant(name: "Teakha", type: "Tea House", location: "Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-03", isVisited: false),
-//    Restaurant(name: "Cafe loisl", type: "Austrian / Causual Drink", location: "Hong Kong,Hong Kong,Hong Kong,Hong Kong",
-//    image: "free-flat-halloween-icons-04", isVisited: false),
-//    Restaurant(name: "Petite Oyster", type: "French", location: "Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-05", isVisited: false),
-//    Restaurant(name: "For Kee Restaurant", type: "Bakery", location: "Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-06", isVisited: false),
-//    Restaurant(name: "Po's Atelier", type: "Bakery", location: "Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-07", isVisited: false),
-//    Restaurant(name: "Bourke Street Backery", type: "Chocolate", location: "Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-08", isVisited: false),
-//    Restaurant(name: "Haigh's Chocolate", type: "Cafe", location: "Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-09", isVisited: false),
-//    Restaurant(name: "Palomino Espresso", type: "American / Seafood", location: "Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong",
-//    image: "free-flat-halloween-icons-10", isVisited: false),
-//    Restaurant(name: "Upstate", type: "American", location: "New York.Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-11", isVisited: false),
-//    Restaurant(name: "Traif", type: "American", location: "New York.Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong", image: "free-flat-halloween-icons-21",
-//    isVisited: false),
-//    Restaurant(name: "Graham Avenue Meats", type: "Breakfast & Brunch", location: "New York.Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong", image: "free-flat-halloween-icons-12", isVisited: false),
-//    Restaurant(name: "Waffle & Wolf", type: "Coffee & Tea", location: "New York.Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-13", isVisited: false),
-//    Restaurant(name: "Five Leaves", type: "Coffee & Tea", location: "New York.Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-14", isVisited: false),
-//    Restaurant(name: "Cafe Lore", type: "Latin American", location: "New York.Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-15", isVisited: false),
-//    Restaurant(name: "Confessional", type: "Spanish", location: "New York.Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-16", isVisited: false),
-//    Restaurant(name: "Barrafina", type: "Spanish", location: "London,New York.Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-17", isVisited: false),
-//    Restaurant(name: "Donostia", type: "Spanish", location: "London,New York.Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-18", isVisited: false),
-//    Restaurant(name: "Royal Oak", type: "British", location: "London,New York.Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong", image:
-//    "free-flat-halloween-icons-19", isVisited: false),
-//    Restaurant(name: "Thai Cafe", type: "Thai", location: "London,New York.Sydney.Hong Kong,Hong Kong,Hong Kong,Hong Kong", image: "free-flat-halloween-icons-20",
-//    isVisited: false)
-//    ]
+    var restaurants:[Restaurant] = []
+    var fetchResultController:NSFetchedResultsController!
     
     
     override func viewDidLoad() {
@@ -64,6 +23,25 @@ class CustomTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
+        //let homeDir = NSHomeDirectory() //sandbox
+        //println(homeDir)
+        
+        //fetch the data from database
+        var fetchRequest = NSFetchRequest(entityName: "Restaurant")
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext{
+            fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+            fetchResultController.delegate = self
+            
+            var e:NSError?
+            var result = fetchResultController.performFetch(&e)
+            restaurants = fetchResultController.fetchedObjects as! [Restaurant]
+            if result != true{
+                println(e?.localizedDescription)
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -84,8 +62,10 @@ class CustomTableViewController: UITableViewController {
         cell.locationLabel.text = tempEntity.location
         cell.typeLabel.text = tempEntity.type
         //cell.accessoryType = isVisitedArrays[indexPath.row] ? .Checkmark: .None
+        //tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         return cell
     }
+
     /*
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let openMenu = UIAlertController(title: nil, message: "what do you want to do?", preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -139,13 +119,27 @@ class CustomTableViewController: UITableViewController {
             shareMenu.addAction(cancelAction)
             self.presentViewController(shareMenu, animated: true, completion: nil)
         }
-        var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default,
-            title: "Delete",handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-                // Delete the row from the data source
-                self.restaurants.removeAtIndex(indexPath.row)
-                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title:
+            "Delete",handler: {
+            (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            // Delete the row from the data source
+            if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext {
+                let restaurantToDelete = self.fetchResultController.objectAtIndexPath(indexPath) as! Restaurant
+                managedObjectContext.deleteObject(restaurantToDelete)
+                var e: NSError?
+                if managedObjectContext.save(&e) != true {
+                    println("delete error: \(e!.localizedDescription)")
+                }
             }
-        )
+         })
+
+//        var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default,
+//            title: "Delete",handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+//                // Delete the row from the data source
+//                self.restaurants.removeAtIndex(indexPath.row)
+//                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//            }
+//        )
         shareAction.backgroundColor = UIColor(red: 255.0/255.0, green: 166.0/255.0, blue:51.0/255.0, alpha: 1.0)
         deleteAction.backgroundColor = UIColor.redColor()
         return[deleteAction, shareAction]
@@ -163,7 +157,33 @@ class CustomTableViewController: UITableViewController {
     
     //
     @IBAction func unwindToHomeScreen(segue:UIStoryboardSegue){
-    
+        
     }
+    
+    //MARK: - NSFetchedResultsControllerDelegate Method
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath!, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath!) {
+        switch type {
+        case NSFetchedResultsChangeType.Insert:
+            self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        case NSFetchedResultsChangeType.Delete:
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        case NSFetchedResultsChangeType.Update:
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        default:
+            tableView.reloadData()
+        }
+        restaurants = controller.fetchedObjects as! [Restaurant]
+    }
+
+
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+    
     
  }

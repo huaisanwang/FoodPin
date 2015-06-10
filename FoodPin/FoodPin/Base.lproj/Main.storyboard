@@ -8,7 +8,7 @@
         <!--New Resuanut-->
         <scene sceneID="aFS-CE-Kjh">
             <objects>
-                <tableViewController id="Sop-nF-sx2" customClass="AddableViewController" customModule="tableViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Sop-nF-sx2" customClass="AddableViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aHk-6K-vYg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,13 +165,13 @@
         <!--Food Pin-->
         <scene sceneID="ubY-rv-9YK">
             <objects>
-                <tableViewController id="tCY-1k-lAh" customClass="CustomTableViewController" customModule="tableViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="tCY-1k-lAh" customClass="CustomTableViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="hPs-dY-3fg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="80" id="1be-c6-oVm" customClass="CustomTableViewCell" customModule="tableViewTest" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="80" id="1be-c6-oVm" customClass="CustomTableViewCell" customModule="FoodPin" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1be-c6-oVm" id="e1n-GZ-hgr">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -248,7 +248,7 @@
         <!--Detail View Controller-->
         <scene sceneID="atb-52-BhJ">
             <objects>
-                <viewController id="FDH-QJ-TUV" customClass="DetailViewController" customModule="tableViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FDH-QJ-TUV" customClass="DetailViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YVv-OX-1Y3"/>
                         <viewControllerLayoutGuide type="bottom" id="Alv-b0-lGg"/>
@@ -265,7 +265,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="45" id="G2x-5W-XAF" customClass="DetailTableViewCell" customModule="tableViewTest" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="45" id="G2x-5W-XAF" customClass="DetailTableViewCell" customModule="FoodPin" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G2x-5W-XAF" id="Grf-FX-9lr">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -367,7 +367,7 @@
         <!--Review View Controller-->
         <scene sceneID="kxE-EW-F6T">
             <objects>
-                <viewController id="QXH-FH-KKb" customClass="ReviewViewController" customModule="tableViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QXH-FH-KKb" customClass="ReviewViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wLg-AF-25v"/>
                         <viewControllerLayoutGuide type="bottom" id="9Hk-ot-eio"/>
@@ -465,7 +465,7 @@
         <!--Map View Controller-->
         <scene sceneID="3Vf-HX-Fwn">
             <objects>
-                <viewController id="053-Uc-GdB" customClass="MapViewController" customModule="tableViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="053-Uc-GdB" customClass="MapViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oT0-jG-X8q"/>
                         <viewControllerLayoutGuide type="bottom" id="nIq-KL-z3U"/>
