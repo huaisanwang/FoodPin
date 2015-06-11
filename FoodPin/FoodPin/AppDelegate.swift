@@ -29,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         // 1.info.plist to add view controller-based status bar appearance 2. add below code
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        // 底部工具栏设置
+        UITabBar.appearance().tintColor = UIColor(red: 235/255.0, green: 75/255.0, blue: 27/255.0, alpha: 1.0)
+        UITabBar.appearance().barTintColor = UIColor.blackColor()
         return true
     }
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA4778D81B295ED900E23D28 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4778D71B295ED900E23D28 /* MyPageViewController.swift */; };
+		EA4778DA1B2977E300E23D28 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4778D91B2977E300E23D28 /* AboutViewController.swift */; };
+		EA7318181B2948920009F9A7 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7318171B2948920009F9A7 /* PageContentViewController.swift */; };
 		EA8088A21B285D8500B7DF72 /* AddableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80889A1B285D8500B7DF72 /* AddableViewController.swift */; };
 		EA8088A31B285D8500B7DF72 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80889B1B285D8500B7DF72 /* CustomTableViewCell.swift */; };
 		EA8088A41B285D8500B7DF72 /* CustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80889C1B285D8500B7DF72 /* CustomTableViewController.swift */; };
@@ -34,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA4778D71B295ED900E23D28 /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		EA4778D91B2977E300E23D28 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		EA7318171B2948920009F9A7 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		EA80889A1B285D8500B7DF72 /* AddableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddableViewController.swift; sourceTree = "<group>"; };
 		EA80889B1B285D8500B7DF72 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		EA80889C1B285D8500B7DF72 /* CustomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +89,9 @@
 				EA80889F1B285D8500B7DF72 /* MapViewController.swift */,
 				EA8088A01B285D8500B7DF72 /* Restaurant.swift */,
 				EA8088A11B285D8500B7DF72 /* ReviewViewController.swift */,
+				EA7318171B2948920009F9A7 /* PageContentViewController.swift */,
+				EA4778D71B295ED900E23D28 /* MyPageViewController.swift */,
+				EA4778D91B2977E300E23D28 /* AboutViewController.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -201,6 +210,7 @@
 				TargetAttributes = {
 					EAFC51D51B20A045008A0A4A = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 86KT9Q6ZP4;
 					};
 					EAFC51EA1B20A045008A0A4A = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -257,10 +267,13 @@
 				EA8088A21B285D8500B7DF72 /* AddableViewController.swift in Sources */,
 				EA8088A61B285D8500B7DF72 /* DetailViewController.swift in Sources */,
 				EA8088A81B285D8500B7DF72 /* Restaurant.swift in Sources */,
+				EA7318181B2948920009F9A7 /* PageContentViewController.swift in Sources */,
 				EA8088AD1B285D8D00B7DF72 /* FoodPin.xcdatamodeld in Sources */,
+				EA4778D81B295ED900E23D28 /* MyPageViewController.swift in Sources */,
 				EA8088A51B285D8500B7DF72 /* DetailTableViewCell.swift in Sources */,
 				EAB86FDE1B21DCB000940FE3 /* AppDelegate.swift in Sources */,
 				EA8088A71B285D8500B7DF72 /* MapViewController.swift in Sources */,
+				EA4778DA1B2977E300E23D28 /* AboutViewController.swift in Sources */,
 				EA8088A91B285D8500B7DF72 /* ReviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,9 +401,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FoodPin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -398,9 +414,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FoodPin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

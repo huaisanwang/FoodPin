@@ -65,12 +65,12 @@ class AddableViewController: UITableViewController,UIImagePickerControllerDelega
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0{
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera){
                 
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.allowsEditing = false
-                imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
                 
                 self.presentViewController(imagePicker, animated: true, completion: nil)
             }

@@ -4,29 +4,61 @@
 //
 //  Created by JsonWang on 15-6-5.
 //  Copyright (c) 2015年 cn.jsonWang. All rights reserved.
-//
+//          //let homeDir = NSHomeDirectory() //sandbox
 
 import UIKit
 import CoreData
 
-class CustomTableViewController: UITableViewController,NSFetchedResultsControllerDelegate{
+class CustomTableViewController: UITableViewController,NSFetchedResultsControllerDelegate,UISearchResultsUpdating{
     
     var restaurants:[Restaurant] = []
     var fetchResultController:NSFetchedResultsController!
+    var searchController:UISearchController!
+    var searchResults:[Restaurant] = []
+    var isWalkedThrouhtView = false
     
+    let haystack: NSString = "the function to find some specify thing in the string"
+    let needle: NSString = "function"
+    
+    //mark: - search method
+    func filterContentForSearchText(searchText:String!){
+        searchResults = restaurants.filter({ (entity:Restaurant) -> Bool in
+            let nameMatch = entity.name.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return nameMatch != nil
+        })
+    
+    }
+
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        let searchText = searchController.searchBar.text
+        filterContentForSearchText(searchText)
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        // cell 高度自定义1,autolayout 2,lines=0,3like add below code
-        self.tableView.estimatedRowHeight = 36.0
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
-        //let homeDir = NSHomeDirectory() //sandbox
-        //println(homeDir)
-        
+        //是否调用滑动窗口
+        toWalkThrouhtViewOrNot()
+        setnavigationForUI()
         //fetch the data from database
+        loadDataFromContext()
+        //add searchbar
+        setSearchController()
+    
+
+    }
+
+    func toWalkThrouhtViewOrNot(){
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let hasViewedWalkthrough = defaults.boolForKey("hasViewdwalkthrough")
+        if hasViewedWalkthrough == false{
+            if let pageViewController = storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as? MyPageViewController{
+                self.presentViewController(pageViewController, animated: true, completion: nil)
+            }
+        }
+    }
+    func loadDataFromContext(){
+    
         var fetchRequest = NSFetchRequest(entityName: "Restaurant")
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -43,17 +75,43 @@ class CustomTableViewController: UITableViewController,NSFetchedResultsControlle
             }
         }
     }
-
+    func setnavigationForUI(){
+    
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        // cell 高度自定义1,autolayout 2,lines=0,3like add below code
+        self.tableView.estimatedRowHeight = 36.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
+    
+    }
+    
+    func setSearchController(){
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.sizeToFit()
+        tableView.tableHeaderView = searchController.searchBar
+        definesPresentationContext = true
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.tintColor = UIColor.whiteColor()
+        searchController.searchBar.placeholder = "Search Food"
+        searchController.searchBar.barTintColor = UIColor.orangeColor()
+    }
+        
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.restaurants.count
+        if searchController.active{
+            return searchResults.count
+        }else{
+            return self.restaurants.count
+        }
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIndentifier = "cell"
-        var tempEntity = self.restaurants[indexPath.row]
+        var tempEntity = (searchController.active) ? searchResults[indexPath.row] : self.restaurants[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as! CustomTableViewCell
         cell.imgview.image = UIImage(data: tempEntity.image)
         cell.imgview.layer.cornerRadius = cell.imgview.frame.size.width / 2
@@ -99,6 +157,15 @@ class CustomTableViewController: UITableViewController,NSFetchedResultsControlle
 //            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
 //        }
     }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if searchController.active{
+            return false
+        }else{
+            return true
+        }
+    }
+
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         //println("first action")
@@ -150,7 +217,7 @@ class CustomTableViewController: UITableViewController,NSFetchedResultsControlle
         if segue.identifier == "showDetailSegue" {
             if let indexPath = self.tableView.indexPathForSelectedRow(){
                 let destinationController =  segue.destinationViewController as! DetailViewController
-                destinationController.restaurant = restaurants[indexPath.row]
+                destinationController.restaurant = (searchController.active) ? searchResults[indexPath.row] : restaurants[indexPath.row]
             }
         }
     }
