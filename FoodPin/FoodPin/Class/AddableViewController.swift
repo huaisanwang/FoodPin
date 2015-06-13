@@ -33,7 +33,7 @@ class AddableViewController: UITableViewController,UIImagePickerControllerDelega
     
     
     @IBAction func saveRestaurant(sender: AnyObject) {
-        
+
         if let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext{
             restaurant = NSEntityDescription.insertNewObjectForEntityForName("Restaurant", inManagedObjectContext: managedObjectContext) as! Restaurant
             restaurant.name = nameTextField.text
@@ -46,6 +46,16 @@ class AddableViewController: UITableViewController,UIImagePickerControllerDelega
             if managedObjectContext.save(&e) != true{
                 println("insert error:\(e!.localizedDescription)")
                 return
+            }else{
+                let alertView = UIAlertController(title: nil, message: "Save scuessfully",
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                let defaultAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.Default) { (alertView:UIAlertAction!) -> Void in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                let cancelAction = UIAlertAction(title: "cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+                alertView.addAction(defaultAction)
+                alertView.addAction(cancelAction)
+                self.presentViewController(alertView, animated: true, completion: nil)
             }
         }
     }

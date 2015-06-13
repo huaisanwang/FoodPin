@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EA4778D81B295ED900E23D28 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4778D71B295ED900E23D28 /* MyPageViewController.swift */; };
-		EA4778DA1B2977E300E23D28 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4778D91B2977E300E23D28 /* AboutViewController.swift */; };
+		EA7254811B2A9C2F00F9A123 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7254801B2A9C2F00F9A123 /* AboutViewController.swift */; };
+		EA7254831B2A9CC100F9A123 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7254821B2A9CC100F9A123 /* WebViewController.swift */; };
 		EA7318181B2948920009F9A7 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7318171B2948920009F9A7 /* PageContentViewController.swift */; };
 		EA8088A21B285D8500B7DF72 /* AddableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80889A1B285D8500B7DF72 /* AddableViewController.swift */; };
 		EA8088A31B285D8500B7DF72 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80889B1B285D8500B7DF72 /* CustomTableViewCell.swift */; };
@@ -38,7 +39,8 @@
 
 /* Begin PBXFileReference section */
 		EA4778D71B295ED900E23D28 /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
-		EA4778D91B2977E300E23D28 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		EA7254801B2A9C2F00F9A123 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		EA7254821B2A9CC100F9A123 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		EA7318171B2948920009F9A7 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		EA80889A1B285D8500B7DF72 /* AddableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddableViewController.swift; sourceTree = "<group>"; };
 		EA80889B1B285D8500B7DF72 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -91,7 +93,8 @@
 				EA8088A11B285D8500B7DF72 /* ReviewViewController.swift */,
 				EA7318171B2948920009F9A7 /* PageContentViewController.swift */,
 				EA4778D71B295ED900E23D28 /* MyPageViewController.swift */,
-				EA4778D91B2977E300E23D28 /* AboutViewController.swift */,
+				EA7254801B2A9C2F00F9A123 /* AboutViewController.swift */,
+				EA7254821B2A9CC100F9A123 /* WebViewController.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -273,7 +276,8 @@
 				EA8088A51B285D8500B7DF72 /* DetailTableViewCell.swift in Sources */,
 				EAB86FDE1B21DCB000940FE3 /* AppDelegate.swift in Sources */,
 				EA8088A71B285D8500B7DF72 /* MapViewController.swift in Sources */,
-				EA4778DA1B2977E300E23D28 /* AboutViewController.swift in Sources */,
+				EA7254831B2A9CC100F9A123 /* WebViewController.swift in Sources */,
+				EA7254811B2A9C2F00F9A123 /* AboutViewController.swift in Sources */,
 				EA8088A91B285D8500B7DF72 /* ReviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
