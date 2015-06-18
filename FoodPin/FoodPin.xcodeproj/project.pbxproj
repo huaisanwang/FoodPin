@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA1BF94F1B2ED5F4005093F4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1BF94E1B2ED5F4005093F4 /* Model.swift */; };
+		EA1BF9511B2ED646005093F4 /* Establishment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1BF9501B2ED646005093F4 /* Establishment.swift */; };
+		EA1BF9531B2ED688005093F4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1BF9521B2ED688005093F4 /* UserInfo.swift */; };
+		EA40C94A1B2EE137002984CB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA40C9491B2EE137002984CB /* CloudKit.framework */; };
 		EA4778D81B295ED900E23D28 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4778D71B295ED900E23D28 /* MyPageViewController.swift */; };
 		EA7254811B2A9C2F00F9A123 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7254801B2A9C2F00F9A123 /* AboutViewController.swift */; };
 		EA7254831B2A9CC100F9A123 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7254821B2A9CC100F9A123 /* WebViewController.swift */; };
@@ -38,6 +42,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA1BF94B1B2ECD6B005093F4 /* FoodPin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FoodPin.entitlements; sourceTree = "<group>"; };
+		EA1BF94E1B2ED5F4005093F4 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		EA1BF9501B2ED646005093F4 /* Establishment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Establishment.swift; sourceTree = "<group>"; };
+		EA1BF9521B2ED688005093F4 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		EA40C9491B2EE137002984CB /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		EA4778D71B295ED900E23D28 /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		EA7254801B2A9C2F00F9A123 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		EA7254821B2A9CC100F9A123 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA40C94A1B2EE137002984CB /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				EA8088AB1B285D8D00B7DF72 /* FoodPin.xcdatamodeld */,
+				EA1BF94E1B2ED5F4005093F4 /* Model.swift */,
+				EA1BF9501B2ED646005093F4 /* Establishment.swift */,
+				EA1BF9521B2ED688005093F4 /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,6 +123,7 @@
 		EAFC51CD1B20A045008A0A4A = {
 			isa = PBXGroup;
 			children = (
+				EA40C9491B2EE137002984CB /* CloudKit.framework */,
 				EAFC51D81B20A045008A0A4A /* FoodPin */,
 				EAFC51EE1B20A045008A0A4A /* FoodPinTests */,
 				EAFC51D71B20A045008A0A4A /* Products */,
@@ -128,6 +142,7 @@
 		EAFC51D81B20A045008A0A4A /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				EA1BF94B1B2ECD6B005093F4 /* FoodPin.entitlements */,
 				EA8088AA1B285D8D00B7DF72 /* Model */,
 				EA8088991B285D8500B7DF72 /* Class */,
 				EAB86FE51B21DCC600940FE3 /* Main.storyboard */,
@@ -214,6 +229,11 @@
 					EAFC51D51B20A045008A0A4A = {
 						CreatedOnToolsVersion = 6.3.2;
 						DevelopmentTeam = 86KT9Q6ZP4;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					EAFC51EA1B20A045008A0A4A = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -265,9 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1BF94F1B2ED5F4005093F4 /* Model.swift in Sources */,
+				EA1BF9511B2ED646005093F4 /* Establishment.swift in Sources */,
 				EA8088A41B285D8500B7DF72 /* CustomTableViewController.swift in Sources */,
 				EA8088A31B285D8500B7DF72 /* CustomTableViewCell.swift in Sources */,
 				EA8088A21B285D8500B7DF72 /* AddableViewController.swift in Sources */,
+				EA1BF9531B2ED688005093F4 /* UserInfo.swift in Sources */,
 				EA8088A61B285D8500B7DF72 /* DetailViewController.swift in Sources */,
 				EA8088A81B285D8500B7DF72 /* Restaurant.swift in Sources */,
 				EA7318181B2948920009F9A7 /* PageContentViewController.swift in Sources */,
@@ -405,6 +428,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FoodPin/FoodPin.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FoodPin/Info.plist;
@@ -418,6 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FoodPin/FoodPin.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FoodPin/Info.plist;
